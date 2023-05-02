@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MicrophoneInput : MonoBehaviour
-{
+public class MicrophoneInput : MonoBehaviour {
+
     [SerializeField] private AudioSource Audio;
+    private AudioClip recordedClip;
 
     public void StartRecording() {
         int sampleRate = AudioSettings.outputSampleRate;
@@ -16,5 +17,7 @@ public class MicrophoneInput : MonoBehaviour
     public void StopRecording() {
         Audio.Stop();
         Microphone.End(null);
+        recordedClip = Audio.clip;
     }
+
 }
